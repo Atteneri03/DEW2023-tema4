@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .marked{
+      background-color: yellow;
+    }
+    
+    .bold {
+      font-weight: bold;
+    }
+
+    .underline {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>Elemento 1</li>
+    <li>Elemento 2</li> 
+    <li>Elemento 3</li>
+    <li>Elemento 4</li>
+    <li>Elemento 5</li>
+  </ul>
+
+  <p>
+    <input type="checkbox" id="mark"><label for="mark">Añadir marcado</label>
+  </p>
+  <p>
+    <input type="checkbox" id="bold"><label for="bold">Negrita</label>
+  </p>
+  <p>
+    <input type="checkbox" id="underline"><label for="underline">underLine</label>
+  </p>
+  <p>
+    <input type="checkbox" id="logger"><label for="logger">Logger</label>
+  </p>
+
+
+  <script>
+
+    function changeMark(){
+      this.classList.toggle("marked");
+    }
+
+    function changeBold(){
+      this.classList.toggle("bold");
+    }
+
+    function changeUnderLine(){
+      this.classList.toggle("underline");
+    }
+
+    function showConsole(){
+      console.log(this.textContent)
+    }
+
+    const options = ["mark","bold","underline","logger"];
+    const functions = [changeMark,changeBold,changeUnderLine,showConsole];
+
+    function toggleEvent(optionName, functionName){
+      const option = document.getElementById(optionName);
+      option.addEventListener("change", ()=>{
+      const list = document.querySelectorAll("li");
+      if(option.checked){
+        list.forEach(e => e.addEventListener("click", functionName));
+      } else {
+        list.forEach(e => e.removeEventListener("click", functionName));
+      }
+     
+    });
+    }
+
+    for(let i=0; i<options.length;i++){
+      toggleEvent(options[i],functions[i]);
+    }
+    
+  </script>
+</body>
+</html>

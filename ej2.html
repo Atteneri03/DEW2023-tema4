@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .marked{
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>Elemento 1</li>
+    <li>Elemento 2</li> 
+    <li>Elemento 3</li>
+    <li>Elemento 4</li>
+    <li>Elemento 5</li>
+  </ul>
+
+  <input type="checkbox" id="mark">
+  <label for="mark">Añadir marcado</label>
+
+  <script>
+    let input = document.querySelector("input");
+
+    function mark(){
+      this.classList.toggle("marked");
+    }
+    
+    input.addEventListener("change", ()=>{
+      const list = document.querySelectorAll("li");
+      if(input.checked){
+        list.forEach(e => e.addEventListener("click", mark));
+      } else {
+        list.forEach(e => e.removeEventListener("click", mark));
+      }
+     
+    })
+
+  </script>
+</body>
+</html>

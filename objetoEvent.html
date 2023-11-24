@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      padding: 20px;
+      background-color: aquamarine;
+    }
+
+    p {
+      padding: 10px;
+      background-color: hotpink;
+    }
+  </style>
+</head>
+<body>
+  <h2>Objeto Event</h2>
+  <p>Division con evento onclik</p>
+  <div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ut tempor augue, ac tempus nunc</p>
+    <p>Hola <span>mundo</span></p>
+  </div>
+  <script>
+    let div = document.querySelector("div");
+    div.addEventListener("click", function(event){
+      console.log("clickado en ", event.target);
+      console.log(event);
+      //event.target.remove();
+    })
+  </script>
+</body>
+</html>
