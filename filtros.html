@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .hide {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Filtros</h1>
+  <p>
+    <input type="text" name="" id="input-filter">
+  </p>
+  <ul id = "list">
+
+  </ul>
+  <script>
+    const fruits = ["pera","manzana","uva","mandarina","platano","melocotón","melón"];
+    const list = document.getElementById("list");
+
+    function init(){
+      fruits.forEach(fruit => {
+        const li = document.createElement("li");
+        li.textContent = fruit;
+        list.append(li);
+      })
+    }
+
+    function filter(event){
+      const text = event.target.value;
+      const lis = document.querySelectorAll("li");
+      lis.forEach(fruit => {
+        if(fruit.textContent.includes(text)){
+          fruit.classList.remove("hide");
+        } else {
+          fruit.classList.add("hide");
+
+        }
+      })
+    }
+
+    const inputFilter = document.getElementById("input-filter");
+    inputFilter.addEventListener("keyup",filter);
+
+    init();
+  </script>
+</body>
+</html>
