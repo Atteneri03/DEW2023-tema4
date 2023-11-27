@@ -14,6 +14,7 @@
   <h1>Filtros</h1>
   <p>
     <input type="text" name="" id="input-filter">
+    <button id="button-order">Ordenar</button>
   </p>
   <ul id = "list">
 
@@ -34,7 +35,7 @@
       const text = event.target.value;
       const lis = document.querySelectorAll("li");
       lis.forEach(fruit => {
-        if(fruit.textContent.includes(text)){
+        if(fruit.textContent.includes(text)){ //startsWith
           fruit.classList.remove("hide");
         } else {
           fruit.classList.add("hide");
@@ -43,8 +44,17 @@
       })
     }
 
+    function sort(event){
+      const lis = [...document.querySelectorAll("li")];
+      lis.sort((li1,li2) => li1.textContent.localeCompare(li2.textContent)); 
+      lis.forEach(li => list.append(li));
+    }
+
     const inputFilter = document.getElementById("input-filter");
     inputFilter.addEventListener("keyup",filter);
+
+    const buttonOrder = document.getElementById("button-order");
+    buttonOrder.addEventListener("click",sort);
 
     init();
   </script>
