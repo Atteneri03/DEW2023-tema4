@@ -1,0 +1,24 @@
+.parent {
+  border: 2px solid purple;
+  color: black;
+  display: flex;
+}
+
+.box {
+  flex-basis: 100%;
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid violet;
+}
+
+#box2 {
+  background-color: pink;
+}
+
+.element {
+  background-color: lightblue;
+}
+
+.selected {
+  background-color: lightgreen;
+}
